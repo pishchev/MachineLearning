@@ -13,12 +13,12 @@ class Model:
     def non_zero_weights(self):
         nzarray = []
         for index in range(len(self.weights)):
-            if (self.weights[index]!= 0):
+            if (self.weights[index] != 0):
                 nzarray.append(index)
         return np.array(nzarray)
 
     def predicts(self, test_X, train_X, train_Y):
-        preds = list(map(lambda x: self.predict(x, train_X, train_Y) , test_X))
+        preds = list(map(lambda x: self.predict(x, train_X, train_Y), test_X))
         return np.array(preds)
 
     def predict(self, sample, train_X, train_Y):
@@ -27,5 +27,5 @@ class Model:
             label = train_Y[index]
             train_sample = train_X[index]
             weight = self.weights[index]
-            resVec[label] +=  weight * self.kernel(utils.dist(train_sample,sample,self.pow_distance) / self.max_distance)
+            resVec[label] +=  weight * self.kernel(utils.dist(train_sample, sample, self.pow_distance) / self.max_distance)
         return np.argmax(resVec)
