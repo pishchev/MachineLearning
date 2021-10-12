@@ -18,9 +18,7 @@ class Model:
         return np.array(nzarray)
 
     def predicts(self, test_X, train_X, train_Y):
-        preds = []
-        for sample in test_X:
-            preds.append(self.predict(sample, train_X, train_Y))
+        preds = list(map(lambda x: self.predict(x, train_X, train_Y) , test_X))
         return np.array(preds)
 
     def predict(self, sample, train_X, train_Y):

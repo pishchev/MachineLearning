@@ -1,5 +1,7 @@
-from scipy.spatial import distance
 import numpy as np
+
+from scipy.spatial import distance
+from functools import reduce
 
 def dist(sample1,sample2,n=2):
     return distance.minkowski(sample1,sample2,n)
@@ -19,9 +21,6 @@ def wrong_indexes(predicts, truth):
     return wrong_ind
     
 def accuracy(predicts, ground_truth):
-    truth = 0
-    for index in range(len(predicts)):
-        if predicts[index] == ground_truth[index]:
-            truth +=1 
+    truth = reduce(lambda x, elem: x + 1 if elem[0] == elem[1] else x, zip(predicts, ground_truth),0 )
     print(str(truth) +"/" + str(len(predicts)))
     print("Accuracy: "+str(truth/len(predicts)))
