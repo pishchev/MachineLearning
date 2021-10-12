@@ -1,3 +1,5 @@
+#без циклов
+
 def TP(arr,treshold):
     sum = 0
     for i in arr:
