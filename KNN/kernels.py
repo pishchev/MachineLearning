@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 def Epanechnikov(r):
     return 3.0/4.0 * (1.0 - r*r)
@@ -14,3 +15,6 @@ def Gauss(r):
 
 def Rect(r):
     return 1.0/2.0
+
+def ApplyToNP(func):
+    return lambda x: np.array(list(map(func, x[0])))
